@@ -1,26 +1,16 @@
-# Contributing to chill.institute
+# Contributing
 
-chill.institute is an independently maintained project. Contributors propose
-changes; repository maintainers review them and decide what lands. A
-contribution does not make its author a project representative or a
-representative of any service the project integrates with.
+chill.institute is an independent project. Contributors propose changes;
+maintainers decide what lands. Contributing does not make anyone a
+representative of the project or its integrations.
 
-## Set Up a Repository
+## Before Opening a Pull Request
 
-1. Read the target repository's README and local contributor guidance.
-2. Fork or clone that repository and follow its documented setup commands.
-3. Create a focused branch for the change.
+- Follow the repository's README for setup and verification.
+- Keep the change focused and follow existing conventions.
+- Explain the result, checks performed, risks, and follow-up work.
 
-Repository-local instructions and verification commands take precedence over
-these organization-wide defaults.
+Maintainers handle settings, credentials, releases, and production unless they
+explicitly coordinate otherwise.
 
-## Submit a Change
-
-- Keep the proposal focused and follow the repository's existing conventions.
-- Run its documented checks and record what you verified.
-- Describe the user-facing result, relevant risks, and any follow-up work.
-- Let maintainers handle repository settings, credentials, releases, and
-  production operations unless they explicitly coordinate otherwise.
-
-Report suspected vulnerabilities through the repository's private Security tab,
-not through a public issue.
+Report vulnerabilities privately through the repository's **Security** tab.

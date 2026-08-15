@@ -1,17 +1,13 @@
-<!-- Thanks for contributing. Tell the maintainers what you are proposing and why. -->
+<!-- Thanks for contributing. Give maintainers the context needed to review your proposal. -->
 
-## Contributor summary
+## Proposal
 
-<!-- What user-visible problem or opportunity does this address? -->
+<!-- What should change, and why? -->
 
-## Proposed changes
+## Verification
 
-<!-- Keep this focused on the behavior changed by this pull request. -->
+<!-- What did you run or check? -->
 
-## Validation performed
+## Maintainer notes
 
-<!-- List the checks you ran and any proof a maintainer should review. -->
-
-## Notes for maintainers
-
-<!-- Call out risks, rollout needs, unresolved decisions, or follow-up work. -->
+<!-- Risks, rollout needs, or follow-up work. Remove this section if none. -->
