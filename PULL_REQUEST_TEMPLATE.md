@@ -1,4 +1,4 @@
-<!-- Thanks for contributing. Give maintainers the context needed to review your proposal. -->
+<!-- Give maintainers enough context to evaluate the proposal. -->
 
 ## Proposal
 
