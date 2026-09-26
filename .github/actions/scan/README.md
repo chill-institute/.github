@@ -5,8 +5,12 @@ repository adds it as the last step of its existing `verify` job, after a
 checkout with `persist-credentials: false`:
 
 ```yaml
-- uses: chill-institute/.github/.github/actions/scan@<sha> # vX.Y.Z
+- if: ${{ !cancelled() }}
+  uses: chill-institute/.github/.github/actions/scan@<sha> # vX.Y.Z
 ```
+
+The `!cancelled()` guard scans the range even when an earlier step failed;
+otherwise the next push would start after it and never scan it.
 
 It runs on `push` and `workflow_dispatch` and passes through every other
 event.
