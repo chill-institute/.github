@@ -1,13 +1,15 @@
-<!-- Give maintainers enough context to evaluate the proposal. -->
+## Problem
 
-## Proposal
+<!-- The problem as the user or requester sees it, not the mechanism. -->
 
-<!-- What should change, and why? -->
+## Solution
 
-## Verification
+<!-- One sentence on the approach, then short labeled bullets. Name a risk only
+     when there is a real one. -->
 
-<!-- What did you run or check? -->
+## Proof
 
-## Maintainer notes
-
-<!-- Risks, rollout needs, or follow-up work. Remove this section if none. -->
+<!-- Only what CI cannot show: a screenshot, a recording, before/after numbers.
+     Upload media with `gh pr create --attach ./file.png` or
+     `gh pr comment <n> --attach ./file.mp4`; never commit it to the branch.
+     Delete this section when CI covers everything. -->

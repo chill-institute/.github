@@ -13,4 +13,6 @@ representative of the project or its integrations.
 Maintainers handle settings, credentials, releases, and production unless they
 explicitly coordinate otherwise.
 
-Report vulnerabilities privately through the repository's **Security** tab.
+Report vulnerabilities privately as described in the repository's `SECURITY.md`,
+or in the [organization security policy](https://github.com/chill-institute/.github/blob/main/SECURITY.md)
+when it has none.
