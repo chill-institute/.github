@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["github>chill-institute/renovate-config"],
+  "extends": ["local>chill-institute/.github:renovate-config"],
   "customManagers": [
     {
       "customType": "regex",

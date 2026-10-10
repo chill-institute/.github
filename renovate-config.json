@@ -1,0 +1,173 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "chill.institute shared Renovate policy: weekly, one-day release age, rebase only on conflict, patch and minor grouped per manager, majors separate, digest pinning, non-major automerge after every check passes.",
+  "extends": [
+    "config:recommended",
+    "docker:pinDigests",
+    ":semanticCommits",
+    "helpers:pinGitHubActionDigests"
+  ],
+  "timezone": "UTC",
+  "schedule": [
+    "* 0-5 * * 1"
+  ],
+  "minimumReleaseAge": "1 day",
+  "minimumReleaseAgeBehaviour": "timestamp-optional",
+  "rebaseWhen": "conflicted",
+  "internalChecksFilter": "strict",
+  "dependencyDashboard": true,
+  "prConcurrentLimit": 10,
+  "prHourlyLimit": 0,
+  "labels": [
+    "dependencies"
+  ],
+  "semanticCommitType": "deps",
+  "semanticCommitScope": null,
+  "automerge": false,
+  "platformAutomerge": false,
+  "automergeStrategy": "squash",
+  "packageRules": [
+    {
+      "description": "Group patch and minor updates per manager; majors stay separate",
+      "matchUpdateTypes": [
+        "patch",
+        "minor",
+        "digest",
+        "pin"
+      ],
+      "groupName": "{{manager}} patch and minor"
+    },
+    {
+      "description": "Renovate merges grouped patch, minor, digest, and pin updates itself after every visible check passes; repositories without checks and all majors stay manual",
+      "matchUpdateTypes": [
+        "patch",
+        "minor",
+        "digest",
+        "pin",
+        "pinDigest"
+      ],
+      "automerge": true,
+      "automergeType": "pr"
+    },
+    {
+      "description": "Every manager uses the deps commit prefix; config:recommended's fix/chore split is overridden",
+      "matchPackageNames": [
+        "*"
+      ],
+      "semanticCommitType": "deps"
+    },
+    {
+      "description": "GitHub Actions use the ci commit prefix",
+      "matchManagers": [
+        "github-actions"
+      ],
+      "semanticCommitType": "ci"
+    },
+    {
+      "description": "OpenTofu registry for providers and modules",
+      "matchDatasources": [
+        "terraform-provider",
+        "terraform-module"
+      ],
+      "registryUrls": [
+        "https://registry.opentofu.org"
+      ]
+    },
+    {
+      "description": "required_version tracks OpenTofu releases, not Terraform",
+      "matchManagers": [
+        "terraform"
+      ],
+      "matchDepNames": [
+        "hashicorp/terraform"
+      ],
+      "enabled": false
+    },
+    {
+      "description": "Pin Actions and images by digest on the initial run without waiting for release age",
+      "matchUpdateTypes": [
+        "pin",
+        "pinDigest"
+      ],
+      "minimumReleaseAge": null,
+      "schedule": [
+        "at any time"
+      ]
+    },
+    {
+      "description": "Go toolchain bumps span mise, go.mod directives, and golang images; land them as one change",
+      "matchManagers": [
+        "mise",
+        "gomod",
+        "dockerfile",
+        "docker-compose"
+      ],
+      "matchDepNames": [
+        "go",
+        "golang"
+      ],
+      "groupName": "go toolchain"
+    },
+    {
+      "description": "Node toolchain bumps span mise and package.json engines; land them as one change",
+      "matchManagers": [
+        "mise",
+        "npm",
+        "nvm",
+        "dockerfile"
+      ],
+      "matchDepNames": [
+        "node"
+      ],
+      "groupName": "node toolchain"
+    },
+    {
+      "description": "pnpm bumps span mise and package.json packageManager; land them as one change",
+      "matchManagers": [
+        "mise",
+        "npm"
+      ],
+      "matchDepNames": [
+        "pnpm"
+      ],
+      "groupName": "pnpm toolchain"
+    },
+    {
+      "description": "Major upgrades require dashboard approval and manual merge",
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "dependencyDashboardApproval": true,
+      "automerge": false
+    }
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "mise pipx backends that the mise manager does not cover",
+      "managerFilePatterns": [
+        "/(^|/)mise\\.toml$/",
+        "/(^|/)\\.mise\\.toml$/"
+      ],
+      "matchStrings": [
+        "\"pipx:(?<depName>[^\"]+)\"\\s*=\\s*\"(?<currentValue>[^\"]+)\""
+      ],
+      "datasourceTemplate": "pypi"
+    },
+    {
+      "customType": "regex",
+      "description": "Annotated version variables: # renovate: datasource=X depName=Y [versioning=Z] [extractVersion=RE]",
+      "managerFilePatterns": [
+        "/\\.ya?ml$/",
+        "/(^|/)mise\\.toml$/"
+      ],
+      "matchStrings": [
+        "#\\s*renovate:\\s*datasource=(?<datasource>[a-z-]+?) depName=(?<depName>[^\\s]+?)(?: versioning=(?<versioning>[a-z-]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?\\s+[\\w-]+:\\s*\"?(?<currentValue>[^\"\\s]+)\"?"
+      ],
+      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
+    }
+  ],
+  "postUpdateOptions": [
+    "gomodTidy"
+  ]
+}
