@@ -4,3 +4,10 @@ allowBuilds:
   protobufjs: false
   re2: true
 minimumReleaseAge: 10080
+minimumReleaseAgeExclude:
+  - "renovate@44.176.1"
+  - "@containerbase/base@14.49.0"
+  - "@renovatebot/base-image@13.139.0"
+  - "@renovatebot/detect-tools@4.0.23"
+  - "argparse@3.0.3"
+  - "markdown-it@15.0.3"
