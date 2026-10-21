@@ -2,6 +2,6 @@
   "name": "@chill-institute/github",
   "private": true,
   "devDependencies": {
-    "renovate": "44.142.1"
+    "renovate": "44.176.1"
   }
 }
