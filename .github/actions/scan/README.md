@@ -12,10 +12,9 @@ checkout with `persist-credentials: false`:
 The `!cancelled()` guard scans the range even when an earlier step failed;
 otherwise the next push would start after it and never scan it.
 
-Inputs, defaults, and supported events are defined in
-[action.yml](./action.yml). [plan.sh](./plan.sh) selects the scan range; a
-manual dispatch or missing ancestor scans full history. Dispatch Verify after
-a scanner upgrade to check history again.
+Inputs, defaults, and supported events: [action.yml](./action.yml).
+Scan ranges: [plan.sh](./plan.sh). Dispatch Verify after a scanner upgrade
+to check history again.
 
 Callers pin the action by full commit SHA with its release tag as a comment.
 [renovate.json](../../../renovate.json) tracks scanner images and caller pins
