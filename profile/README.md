@@ -1,4 +1,4 @@
-![chill.institute engine](https://chill.institute/banner.png)
+![chill.institute engine](https://raw.githubusercontent.com/chill-institute/.github/main/assets/banner.png)
 
 [chill.institute](https://chill.institute) is an independently built and
 maintained way to search, browse, and send movies and TV shows to your
